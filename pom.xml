@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.fugerit.java</groupId>
 		<artifactId>fj-lib</artifactId>
-		<version>8.0.3</version>
+		<version>8.2.6</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -25,11 +25,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java-version-compliance>1.8</java-version-compliance>
+		<java-version-compliance>8</java-version-compliance>
 	    <maven.compiler.source>${java-version-compliance}</maven.compiler.source>
 	    <maven.compiler.target>${java-version-compliance}</maven.compiler.target>
-		<fj-version>8.0.3</fj-version>	
-		<fj-test-helper-version>0.1.0</fj-test-helper-version>    
+		<fj-version>8.2.6</fj-version>	
+		<j2ee-api-version>6.0</j2ee-api-version>	
+		<fj-test-helper-version>0.4.1</fj-test-helper-version>    
 	</properties>
 	
 	<build>
@@ -43,6 +44,7 @@
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<scope>provided</scope>
+			<version>${j2ee-api-version}</version>
 		</dependency>
 
 		<dependency>
