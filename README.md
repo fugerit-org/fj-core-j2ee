@@ -1,4 +1,4 @@
-# Fugerit Core Library (fj-lib) - Jupiter
+# Fugerit Core Library (fj-lib) - Jupiter [DEPRECATED]
 
 ## fj-core-j2ee extensions
 
