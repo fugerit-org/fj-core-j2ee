@@ -2,16 +2,6 @@ package org.fugerit.java.core.web.servlet.config;
 
 public class VersionBean {
 
-	@Override
-	public int hashCode() {
-		return this.getAppName().hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return this.getAppName().equals( ((VersionBean)obj).getAppName() );
-	}
-
 	private String appName;
 	
 	private String appVersion;

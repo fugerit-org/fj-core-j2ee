@@ -103,6 +103,7 @@ public class NavFilter implements Filter {
 				}
 			}
 		} catch (Exception e) {
+			exLog = e;
 			requestContext.getResponse().sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR );
 		} finally {
 			if ( doLog ) {

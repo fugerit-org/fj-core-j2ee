@@ -36,13 +36,14 @@ public class NavFacade {
 		String currentUrl = request.getRequestURI().substring( request.getContextPath().length() );
 		request.setAttribute( NavMap.REQUEST_ATT_NAME , navMap );
 		NavEntryI entry = navMap.getEntryByUrl( currentUrl );
-		logger.info( "NavFilter nav() "+reqId+" url - "+currentUrl+", entry - "+entry );
+		logger.info( "NavFilter nav() {} url {}", reqId, currentUrl );
+		int res = AuthHandler.AUTH_FORBIDDEN;
 		if ( entry != null ) {
 			request.getSession().setAttribute( NavEntry.SESSION_ATT_NAME , entry );
+			res = navMap.getAuthHandler().checkAuth( request , entry.getAuth() );
 		}
-		int res = navMap.getAuthHandler().checkAuth( request , entry.getAuth() );
 		if ( res != AuthHandler.AUTH_AUTHORIZED ) {
-			logger.error( "NavFilter nav() "+reqId+" auth error : "+res );
+			logger.error( "NavFilter nav() {} auth error : {}", reqId, res );
 		}
 		return res;
 	}
