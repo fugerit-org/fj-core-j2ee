@@ -9,8 +9,13 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import org.fugerit.java.core.web.servlet.config.EncoderHelper;
+import org.fugerit.java.core.web.servlet.config.ParamSanitezer;
+
 public class TagSupportHelper extends TagSupport {
 
+	protected EncoderHelper encodeHelper = EncoderHelper.DEFAULT;
+	
 	public static final String SCOPE_CONTEXT = "context";
 	
 	public static final String SCOPE_SESSION = "session";
@@ -43,7 +48,7 @@ public class TagSupportHelper extends TagSupport {
 	
 	public void print( Object message ) throws JspException {
 		try {
-			this.pageContext.getOut().print( message );
+			this.pageContext.getOut().print( this.encodeHelper.encode( message ) );
 		} catch (IOException e) {
 			throw ( new JspException( e ) );
 		}
@@ -84,7 +89,7 @@ public class TagSupportHelper extends TagSupport {
 		} else if ( value != null ) {
 			obj = value;
 		} else if ( parameter != null ) {
-			obj= ((HttpServletRequest)this.pageContext.getRequest()).getParameter( parameter );
+			obj= ((HttpServletRequest)this.pageContext.getRequest()).getParameter( ParamSanitezer.sanitize( parameter ) );
 		}
 		return obj;
 	}	
