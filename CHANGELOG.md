@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.2.6-sa.1] - 2023-09-06
+
+### Fixed
+
+- bug in NavFilter.nav()
+
 ## [8.2.0-sa.1] - 2023-09-06
 
 ### Added
