@@ -6,6 +6,7 @@ import org.fugerit.java.core.cfg.xml.ListMapConfig;
 import org.fugerit.java.core.lang.helpers.ClassHelper;
 import org.fugerit.java.core.web.auth.filter.AuthResourcesConfig;
 import org.fugerit.java.core.web.auth.filter.AuthResourcesEntry;
+import org.junit.Assert;
 import org.junit.Test;
 
 import test.org.fugerit.java.BasicTest;
@@ -27,6 +28,7 @@ public class TestAuthResourcesCatalog extends BasicTest {
 			}
 			AuthResourcesEntry test1Entry = config.match( "/test/test01/prova1" );
 			logger.info( "Found? : "+test1Entry );
+			Assert.assertNotNull( test1Entry );
 		}
 	}
 	

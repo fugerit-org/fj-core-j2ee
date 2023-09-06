@@ -61,7 +61,7 @@ public class NavConfig {
 						parent.getKids().add( entry );
 					}
 					entryList.add( entry );
-					logger.info( "recurseEntries() - adding entry : "+entry+" (parent:"+parent+")" );
+					logger.info( "recurseEntries() - adding entry : {} (parent:{})", entry, parent );
 					// handling aliases
 					String alias = currentEntryTag.getAttribute( "alias" );
 					if ( alias != null && alias.trim().length() > 0 ) {
@@ -91,6 +91,8 @@ public class NavConfig {
 			logger.info( "parseConfig() - parsing input stream start" );
 			
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			dbf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 			DocumentBuilder parser = dbf.newDocumentBuilder();
 			Document document = parser.parse( is );
 			logger.info( "parseConfig() - parsing input stream end" );
@@ -127,7 +129,7 @@ public class NavConfig {
 			} else {
 				throw new Exception( "Configuration error, nav-entry-list tag must be provided" );
 			}
-			logger.info( "parseConfig() - total entries : "+entryList.size() );
+			logger.info( "parseConfig() - total entries : {}", entryList.size() );
 			// parsing menu
 			NodeList navMenuTags = root.getElementsByTagName( "nav-menu" );
 			for ( int k=0; k<navMenuTags.getLength(); k++ ) {
@@ -152,9 +154,9 @@ public class NavConfig {
 					String itemInfo3 = StringUtils.valueWithDefault( currentItem.getAttribute( "item-info3" ) , null );
 					NavMenuItem menuItem = new NavMenuItem( entryItem, useLabel, altLabel, itemInfo1, itemInfo2, itemInfo3, useAuth );
 					menu.getEntries().add( menuItem );
-					logger.debug( "parseConfig() - adding menu item : "+menuItem+" to menu "+id );
+					logger.debug( "parseConfig() - adding menu item : {} to menu {}", menuItem, id );
 				}
-				logger.debug( "parseConfig() - adding menu : "+menu );
+				logger.debug( "parseConfig() - adding menu : {}", menu );
 			}
 			
 			logger.info( "parseConfig() - total menu : "+menuList.size() );
@@ -165,21 +167,20 @@ public class NavConfig {
 		}
 		NavMap navMap = new NavMap( requestFilterList, entryList, menuList );
 		if ( authHandler != null ) {
-			logger.info( "parseConfig() - override auth handler -> "+authHandler );
+			logger.info( "parseConfig() - override auth handler -> {}", authHandler );
 			navMap.setAuthHandler( authHandler );
 		}
 		if ( StringUtils.isNotEmpty( authMapConfig ) ) {
 			File file = new File( servletPath, authMapConfig );
 			if ( file.exists() ) {
-				try {
-					FileInputStream fis = new FileInputStream( file );
+				try ( FileInputStream fis = new FileInputStream( file ) ) {
 					AuthMapCatalogConfig.loadAuthList( fis , navMap.getAuthMap() );
 					fis.close();	
 				} catch (Exception e) {
 					throw new NavException( "Error configuring AuthMap", e );
 				}
 			} else {
-				logger.warn( "AuthMapConfig file not found : "+file.getAbsolutePath() );
+				logger.warn( "AuthMapConfig file not found : {}", file.getAbsolutePath() );
 			}
 		}
 		return navMap;
