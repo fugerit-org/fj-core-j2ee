@@ -13,7 +13,7 @@
 
 	<name>fj-core-j2ee</name>
 	<description>This package includes depecreated j2ee api from fj-core library</description>
-	<version>8.2.6-sa.1</version>
+	<version>8.2.0-sa.1</version>
 
 	<licenses>
 		<license>
