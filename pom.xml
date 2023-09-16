@@ -7,13 +7,13 @@
 	<parent>
 		<groupId>org.fugerit.java</groupId>
 		<artifactId>fj-lib</artifactId>
-		<version>8.2.6</version>
+		<version>8.3.1</version>
 		<relativePath></relativePath>
 	</parent>
 
 	<name>fj-core-j2ee</name>
 	<description>This package includes depecreated j2ee api from fj-core library</description>
-	<version>8.2.6-sa.1</version>
+	<version>8.3.1-rc.1</version>
 
 	<licenses>
 		<license>
@@ -28,9 +28,8 @@
 		<java-version-compliance>8</java-version-compliance>
 	    <maven.compiler.source>${java-version-compliance}</maven.compiler.source>
 	    <maven.compiler.target>${java-version-compliance}</maven.compiler.target>
-		<fj-version>8.2.6</fj-version>	
-		<j2ee-api-version>6.0</j2ee-api-version>	
-		<fj-test-helper-version>0.4.1</fj-test-helper-version>    
+		<fj-version>8.3.1</fj-version>	
+		<j2ee-api-version>6.0</j2ee-api-version>	  
 	</properties>
 	
 	<build>
@@ -65,6 +64,19 @@
 		    <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
 		    <artifactId>owasp-java-html-sanitizer</artifactId>
 		    <version>20220608.1</version>
+		   	<exclusions>
+				<exclusion>
+				    <groupId>com.google.guava</groupId>
+ 					<artifactId>guava</artifactId>
+				</exclusion>	   
+			</exclusions>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>32.1.2-jre</version>
 		</dependency>
 		
 		<dependency>
@@ -79,9 +91,7 @@
 		    <version>2.0.9</version>
 		    <scope>test</scope>
 		</dependency>
-		
 
-		
 		<dependency>
 			<groupId>org.fugerit.java</groupId>
 			<artifactId>fj-test-helper8</artifactId>

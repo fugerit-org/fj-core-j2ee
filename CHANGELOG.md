@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.3.1-sa.1] - 2023-09-16
+
+### Added
+
+- ServletUtils helper class
+
+### Changed
+
+- fj-version set to 8.3.1
+- better test coverage
+
+### Security
+
+- [updated guava dependency](https://github.com/fugerit-org/fj-core-j2ee/security/dependabot/1)
+
 ## [8.2.6-sa.1] - 2023-09-06
 
 ### Fixed

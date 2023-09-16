@@ -1,7 +1,6 @@
 package org.fugerit.java.core.web.servlet.config;
 
 import java.io.File;
-
 import java.io.IOException;
 
 import javax.servlet.ServletConfig;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.fugerit.java.core.web.log.helpers.LogObjectServlet;
+import org.fugerit.java.core.web.servlet.helper.ServletUtils;
 
 public class ConfigServlet extends LogObjectServlet {
 	
@@ -40,11 +40,10 @@ public class ConfigServlet extends LogObjectServlet {
 			}
 		} catch (Exception e) {
 			this.getLogger().error( "Config servler error"+e , e );
-			resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR );
+			ServletUtils.handleServletOperationSafe( () -> resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR) );
 		}
 	}
 
-	
 	/*
 	 * 
 	 */

@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.fugerit.java.core.cfg.ConfigRuntimeException;
+
 public class ParamMap implements Serializable {
 
 
@@ -121,7 +123,7 @@ public class ParamMap implements Serializable {
 		if ( params != null && params.length == 1 ) {
 			result = params[0];
 		} else if ( params != null && params.length > 1 ) {
-			throw ( new RuntimeException( "More than one parameter with given name:"+name ) );
+			throw ( new ConfigRuntimeException( "More than one parameter with given name:"+name ) );
 		}
 		return result;
 	}
