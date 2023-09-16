@@ -27,13 +27,13 @@ public class TestServletUtils {
 	
 	@Test
 	public void testOk() {
-		boolean ok = ServletUtils.handleServletOperationSafe( () -> MOCK.sendError( HttpServletResponse.SC_ACCEPTED ) );
+		boolean ok = ServletUtils.handleSendSafe( MOCK, HttpServletResponse.SC_ACCEPTED  );
 		Assert.assertTrue( ok );
 	}
 	
 	@Test
 	public void testKo() {
-		boolean ok = ServletUtils.handleServletOperationSafe( () -> MOCK.sendError( HttpServletResponse.SC_BAD_REQUEST ) );
+		boolean ok = ServletUtils.handleSendSafe( MOCK, HttpServletResponse.SC_BAD_REQUEST );
 		Assert.assertFalse( ok );
 	}
 	

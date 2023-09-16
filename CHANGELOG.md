@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 - [updated guava dependency](https://github.com/fugerit-org/fj-core-j2ee/security/dependabot/1)
+- [fixed servlet exception handling](https://github.com/fugerit-org/fj-core-j2ee/security/code-scanning/7)
 
 ## [8.2.6-sa.1] - 2023-09-06
 

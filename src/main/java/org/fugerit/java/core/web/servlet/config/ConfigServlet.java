@@ -40,7 +40,7 @@ public class ConfigServlet extends LogObjectServlet {
 			}
 		} catch (Exception e) {
 			this.getLogger().error( "Config servler error"+e , e );
-			ServletUtils.handleServletOperationSafe( () -> resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR) );
+			ServletUtils.handleSendSafe( resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR );
 		}
 	}
 
