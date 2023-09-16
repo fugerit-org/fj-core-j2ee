@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - ServletUtils helper class
+- [workflow deploy on branch main](.github/workflows/deploy_maven_package.yml)
 
 ### Changed
 
